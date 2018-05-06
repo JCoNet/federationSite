@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Federation of Servers</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Titan+One" rel="stylesheet">
 </head>
 <body>

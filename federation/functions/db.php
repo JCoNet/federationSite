@@ -28,4 +28,3 @@ $dbpassword = "";
 $dbname = "federation";
 
 $connection = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
-
