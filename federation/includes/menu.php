@@ -41,8 +41,8 @@
 		</div>
 		<div class="popup-body">
 			<form action="includes/actions/login.php" method="post">
-				<input type="text" name="username" placeholder="Username or Password" autocomplete="off">
-				<input type="password" name="password" placeholder="Password" autocomplete="off">
+				<input type="text" name="username" placeholder="Username or Password" autocomplete="off" value="">
+				<input type="password" name="password" placeholder="Password" autocomplete="off" value="">
 		</div>
 		<div class="popup-footer">
 				<input type="submit" value="Login" name="submit">

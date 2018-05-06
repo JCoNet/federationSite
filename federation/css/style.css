@@ -80,16 +80,23 @@ body {
 	margin-bottom: 20px;
 	font-size: 25px;
 	border: none;
+	padding-right: -80px;
 }
 
-.registerForm input[type="submit"]{
+.registerForm .inputWithIcon button[type="submit"]{
 	background: #7f021b;
 	color: #020e21;
+	width: 100%;
+	margin-left: 37px;
+	height: 60px;
+	font-size: 25px;
+	border: none;
 }
 
-.registerForm input[type="submit"]:hover {
+.registerForm button[type="submit"]:hover {
 	background: #a30625;
 	color: #020e21;
+	border: none;
 }
 
 .error {
@@ -347,4 +354,22 @@ menu Styles
 	background: #a30625;
 	color: #020e21;
 	border: none;
+}
+
+/*
+	ICONS
+*/
+
+.inputWithIcon input {
+	padding-left: 80px;
+	position: relative;
+
+}
+
+.inputWithIcon i {
+	position: absolute;
+	margin-top: -75px;
+	margin-right: 20px;
+	color: #7f021b;
+	padding-right: 10px;
 }

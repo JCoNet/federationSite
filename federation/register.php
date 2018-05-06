@@ -99,10 +99,24 @@
 ?>
 
 <form action="includes/actions/register.php" method="post" class="registerForm">
-	<input type="text" placeholder="Username" name="username" id="username" class="inputRegister" value="<?php echo $username; ?>" autocomplete="off">
-	<input type="email" placeholder="E-Mail" name="email" id="email" class="inputRegister" value="<?php echo $email ?>" autocomplete="off">
-	<input type="password" placeholder="Password" name="password" id="password" class="inputRegister" value="<?php ?>" autocomplete="off">
-	<input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="inputRegister" value="<?php ?>" autocomplete="off">
-	<input type="submit" name="submit" value="register">
+	<div class="inputWithIcon">
+		<input type="text" placeholder="Username" name="username" id="username" class="inputRegister" value="<?php echo $username; ?>" autocomplete="off">
+		<i class="fa fa-user fa-3x fa-fw" aria-hidden="true"></i>
+	</div>
+	<div class="inputWithIcon">
+		<input type="email" placeholder="E-Mail" name="email" id="email" class="inputRegister" value="<?php echo $email ?>" autocomplete="off">
+		<i class="fa fa-envelope fa-3x fa-fw" aria-hidden="true"></i>
+	</div>
+	<div class="inputWithIcon">
+		<input type="password" placeholder="Password" name="password" id="password" class="inputRegister" value="" autocomplete="off">
+		<i class="fa fa-lock fa-3x fa-fw" aria-hidden="true"></i>
+	</div>
+	<div class="inputWithIcon">
+		<input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="inputRegister" value="" autocomplete="off">
+		<i class="fa fa-lock fa-3x fa-fw" aria-hidden="true"></i>
+	</div>
+	<div class="inputWithIcon">
+		<button type="submit" name="submit" value="register">Register</button>
+	</div>
 </form>
 <?php require_once "includes/footer.inc.php"; ?>

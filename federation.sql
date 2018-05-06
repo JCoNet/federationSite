@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2018 at 02:43 AM
+-- Generation Time: May 06, 2018 at 08:19 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `user_password` varchar(256) NOT NULL,
   `user_joined` varchar(256) NOT NULL,
   `user_confirmation_code` varchar(11) NOT NULL,
-  `user_confirmed` int(11) NOT NULL
+  `user_confirmed` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -43,8 +43,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_username`, `user_email`, `user_password`, `user_joined`, `user_confirmation_code`, `user_confirmed`) VALUES
-(1, 'DAG', 'kaseyber12@gmail.com', '$2y$10$EAXkCAUX95Lv62uuBOFMketcn.z8A06if0AfEsuu1wEi/c8mQTYtq', '05 - 05 - 2018', 'FS - 440554', 0),
-(2, 'Kberman', 'rsgclan2@gmail.com', '$2y$10$K5Dtg0g/N/SpHdSHhKGeyeTsUnrI3nwBYj2k3xH3MPnJbMlLK4/7y', '05 - 05 - 2018', 'FS - 277227', 0);
+(1, 'DAG', 'kaseyber12@gmail.com', '$2y$10$EAXkCAUX95Lv62uuBOFMketcn.z8A06if0AfEsuu1wEi/c8mQTYtq', '05 - 05 - 2018', 'FS - 440554', 'confirmed'),
+(2, 'Kberman', 'rsgclan2@gmail.com', '$2y$10$K5Dtg0g/N/SpHdSHhKGeyeTsUnrI3nwBYj2k3xH3MPnJbMlLK4/7y', '05 - 05 - 2018', 'FS - 277227', 'not confirmed');
 
 --
 -- Indexes for dumped tables
