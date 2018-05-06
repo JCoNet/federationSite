@@ -82,7 +82,7 @@ if(isset($_POST['submit'])) {
 
 			$rand = 'FS - ' . confcode(100000, 999999);
 
-			$conf = 0;
+			$conf = 'not confirmed';
 
 
 			$sql = "INSERT INTO users (user_username, user_email, user_password, user_joined, user_confirmation_code, user_confirmed) VALUES ('$username', '$email', '$hash', '$date', '$rand', '$conf');";

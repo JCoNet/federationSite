@@ -39,13 +39,30 @@ if(isset($_POST['submit'])) {
 					$_SESSION['passwordIncorect'] = $password;
 
 					url("../../index.php#popupContainer?password=incorect?");
-				} else if($hash == true) {
-					$_SESSION['user_id'] = $row['id'];
-					$_SESSION['user_username'] = $row['user_username'];
-					$_SESSION['user_email'] = $row['user_email'];
-					$_SESSION['logedin'] = "loggedin";
+				} else {
+					$sql = "SELECT * FROM users WHERE user_username = '$username' OR user_email = '$username'";
+					$result = mysqli_query($connection, $sql);
 
-					url("../../index.php?login=success?");
+					$resultCheck = mysqli_num_rows($result);
+
+					while($row = mysqli_fetch_assoc($result)) {
+						$confirmed = $row['user_confirmed'];
+					}
+
+					if($confirmed == 'not confirmed') {
+						$_SESSION['notConfirmed'] = $username;
+
+						url("../../index.php?user=notconfirmed");
+					} else if($confirmed == 'confirmed') {
+						if($hash == true) {
+							$_SESSION['user_id'] = $row['id'];
+							$_SESSION['user_username'] = $row['user_username'];
+							$_SESSION['user_email'] = $row['user_email'];
+							$_SESSION['logedin'] = "loggedin";
+
+							url("../../index.php?login=success?");
+						}
+					} 
 				}
 			}
 		}

@@ -70,6 +70,10 @@ $username = '';
 		$username = "<div class='error'>Your password is incorect</div>";
 		unset($_SESSION['passwordIncorect']);
 		session_destroy();
+	} else if(isset($_SESSION['notConfirmed'])) {
+		$username = "<div class='error'>You have not confirmed your account yet.</div>";
+		unset($_SESSION['notConfirmed']);
+		session_destroy();
 	}
 
 	echo $username;
