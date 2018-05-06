@@ -63,8 +63,12 @@ $username = '';
 		unset($_SESSION['usernameEmpty']);
 		session_destroy();
 	} else if(isset($_SESSION['usernameIncorect'])) {
-		$username = "<div class='error'>Username or password is incorect</div>";
+		$username = "<div class='error'>Username or Email is incorect</div>";
 		unset($_SESSION['usernameIncorect']);
+		session_destroy();
+	} else if(isset($_SESSION['passwordIncorect'])) {
+		$username = "<div class='error'>Your password is incorect</div>";
+		unset($_SESSION['passwordIncorect']);
 		session_destroy();
 	}
 
