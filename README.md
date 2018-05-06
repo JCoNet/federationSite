@@ -6,9 +6,9 @@
 	<li>download the git reposatory </li>
 	<li>Then go inside the xammp folder -> htdocs -> and place the federation folder </li>
 	<li>press windows key then type in xampp start appache and mysql</li>
-	<li>go to <a href="localhost/phpmyadmin">here</a></li>
+	<li>go to <a href="http://localhost/phpmyadmin">here</a></li>
 	<li>import the included sql file</li>
-	<li>and finaly go <a href="localhost/federation/federation/">here</a></li>
+	<li>and finaly go <a href="http://localhost/federation/federation/">here</a></li>
 </ul>
 
 
