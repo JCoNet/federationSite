@@ -8,7 +8,7 @@
 		unset($_SESSION['thankyou']);
 		session_destroy();
 	} else if(!isset($_SESSION['thankyou'])) {
-		url('index.php?invalidSession');
+		//url('index.php?invalidSession');
 	}
 ?>
 
@@ -19,7 +19,8 @@
 		</h1>
 	</div>
 	<div class="thanks-body">
-		Hello <?php echo $string; ?>, we are thrilled to hear that you have registered with us, but before you log in to your new account you need to check your email and activate your account. You can do this by clicking on the link and filling out the confirmation code inside the box.
+		<h2>Hello <?php echo $string; ?>,</h2>
+		<p class="thanks"> we are thrilled to hear that you have registered with us, but before you log in to your new account you need to check your email and activate your account. You can do this by clicking on the link and filling out the confirmation code inside the box.</p>
 	</div>
 	<div class="thanks-footer">
 		<a href="index.php" class="home">Go Home</a>

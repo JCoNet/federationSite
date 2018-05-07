@@ -19,8 +19,8 @@
 
 		<?php  
 			if(isset($_SESSION['logedin'])) {
-				echo "<p class='welcome'> Hello " . $_SESSION['user_username'] . " would you like to:   ";
-				echo "<a href='logout.php'><button class='logout' id='logout'>Logout</button></a> </p>";
+				echo "<p class='welcome'> <a href='logout.php'><button class='logout' id='logout'>Logout</button></a>";
+				echo "<a href='admin/index.php'>  Welcome " . $_SESSION['user_username'] . '</a>' . " </p>";
 			} else {
 				echo "
 						<button class='login' id='login'>Login</button>
@@ -54,15 +54,7 @@
 <?php  
 
 $username = '';
-	if(isset($_SESSION['usernameEmpty'])) {
-		$username = "<div class='error'>OOPS... You forgot to fill out your username</div>";
-		unset($_SESSION['usernameEmpty']);
-		session_destroy();
-	} else if(isset($_SESSION['passwordEmpty'])) {
-		$username = "<div class='error'>OOPS... You forgot to fill out your password</div>";
-		unset($_SESSION['usernameEmpty']);
-		session_destroy();
-	} else if(isset($_SESSION['usernameIncorect'])) {
+	if(isset($_SESSION['usernameIncorect'])) {
 		$username = "<div class='error'>Username or Email is incorect</div>";
 		unset($_SESSION['usernameIncorect']);
 		session_destroy();

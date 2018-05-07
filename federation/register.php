@@ -11,21 +11,20 @@
 
 	if(isset($_SESSION['postNotUsed'])) {
 		$error = "<div class='error'>You did not use the submit button</div>";
-		unset($_SESSION['postNotUsed']);
+		session_unset();
 		session_destroy();
 	}
 
 	if(isset($_SESSION['usernameEmpty'])) {
 		$error = "<div class='error'>OOPS.... You left your username empty!</div>";
-		unset($_SESSION['usernameEmpty']);
+		session_unset();
 		session_destroy();
 	}
 
 	if(isset($_SESSION['emailEmpty'])) {
 		$error = "<div class='error'>OOPS.... You left your email empty!</div>";
 		$username = $_SESSION['username'];
-		unset($_SESSION['emailEmpty']);
-		unset($_SESSION['username']);
+		session_unset();
 		session_destroy();
 	}
 
@@ -33,19 +32,14 @@
 		$error = "<div class='error'>OOPS.... You left your password empty!</div>";
 		$username = $_SESSION['username'];
 		$email = $_SESSION['email'];
-		unset($_SESSION['passwordEmpty']);
-		unset($_SESSION['username']);
-		unset($_SESSION['email']);
-		session_destroy();
+		session_unset();
 	}
 
 	if(isset($_SESSION['confirmPasswordEmpty'])) {
 		$error = "<div class='error'>OOPS.... You forgot to confirm your password!</div>";
 		$username = $_SESSION['username'];
 		$email = $_SESSION['email'];
-		unset($_SESSION['confirmPasswordeEmpty']);
-		unset($_SESSION['username']);
-		unset($_SESSION['email']);
+		session_unset();
 		session_destroy();
 	}
 
@@ -53,8 +47,7 @@
 		$error = "<div class='error'>You have used invalid characters for your username!</div>";
 		$username = $_SESSION['usernameInvalid'];
 		$email = $_SESSION['email'];
-		unset($_SESSION['usernameInvalid']);
-		unset($_SESSION['email']);
+		session_unset();
 		session_destroy();
 	}
 
@@ -62,8 +55,7 @@
 		$error = "<div class='error'>You have used invalid characters for your email!</div>";
 		$email = $_SESSION['emailInvalid'];
 		$username = $_SESSION['username'];
-		unset($_SESSION['emailInvalid']);
-		unset($_SESSION['email']);
+		session_unset();
 		session_destroy();
 	}
 
@@ -71,9 +63,7 @@
 		$error = "<div class='error'>Your passwords do not match!</div>";
 		$email = $_SESSION['email'];
 		$username = $_SESSION['username'];
-		unset($_SESSION['passwordmatch']);
-		unset($_SESSION['email']);
-		unset($_SESSION['username']);
+		session_unset();;
 		session_destroy();
 	}
 
@@ -81,8 +71,7 @@
 		$error = "<div class='error'>The email you have choses has been registered with us!</div>";
 		$email = $_SESSION['emailExists'];
 		$username = $_SESSION['username'];
-		unset($_SESSION['emailExists']);
-		unset($_SESSION['username']);
+		session_unset();
 		session_destroy();
 	}
 
@@ -90,8 +79,62 @@
 		$error = "<div class='error'>The username you have choses has been registered with us!</div>";
 		$username = $_SESSION['usernameExists'];
 		$email = $_SESSION['email'];
-		unset($_SESSION['usernameExists']);
-		unset($_SESSION['email']);
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['usernameInvalidLenght'])) {
+		$error = "<div class='error'>The username you choose must be at least 6 characters!</div>";
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordNumber'])) {
+		$error = "<div class='error'>Your password must contain at least one number!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordInvalidLenght'])) {
+		$error = "<div class='error'>Your password must be at least 8 characters!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordNewmeric'])) {
+		$error = "<div class='error'>Your password must contain letters!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordCaps'])) {
+		$error = "<div class='error'>Your password must contain atleast one capital letter!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordLower'])) {
+		$error = "<div class='error'>Your password must contain atleast one lowercase letter!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
+		session_destroy();
+	}
+
+	if(isset($_SESSION['passwordSpecail'])) {
+		$error = "<div class='error'>Your password must contain atleast one special character!</div>";
+		$username = $_SESSION['username'];
+		$email = $_SESSION['email'];
+		session_unset();
 		session_destroy();
 	}
 

@@ -14,40 +14,81 @@ if(isset($_POST['submit'])) {
 	if(empty($username)) {
 		$_SESSION['usernameEmpty'] = $username;
 
-		url("../../index.php?username=EMPTY?");
+		url("../../register.php?username=EMPTY?");
 	} else if(empty($email)) {
 		$_SESSION['emailEmpty'] = $email;
 		$_SESSION['username'] = $username;
 
-		url("../../index.php?email=EMPTY?");
+		url("../../register.php?email=EMPTY?");
 	} else if(empty($password)) {
-		$_SESSION['passwordEmpty'] = $password;
+		$_SESSION['passwordEmpty'] = 'empty';
 		$_SESSION['email'] = $email;
 		$_SESSION['username'] = $username;
 
-		url("../../index.php?password=EMPTY?");
+		url("../../register.php?password=EMPTY?");
 	} else if(empty($confirmPassword)) {
 		$_SESSION['confirmPasswordEmpty'] = $confirmPassword;
 		$_SESSION['email'] = $email;
 		$_SESSION['username'] = $username;
 
-		url("../../index.php?confirmPassword=EMPTY?");
-	} else if(!preg_match("/^[a-zA-Z]*$/", $username)) {
+		url("../../register.php?confirmPassword=EMPTY?");
+	} else if(!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 		$_SESSION['usernameInvalid'] = $username;
 		$_SESSION['email'] = $email;
 
-		url("../../index.php?username=invalid?");
+		url("../../register.php?username=invalid?");
+	} else if(strlen($username) < 6) {
+		$_SESSION['usernameInvalidLenght'] = $username;
+		$_SESSION['email'] = $email;
+
+		url("../../register.php?username=invalidLenght?");
+	}else if(!preg_match('#[0-9]#', $password)) {
+		$_SESSION['passwordNumber'] = $password;
+		$_SESSION['username'] = $username;
+		$_SESSION['email'] = $email;
+
+		url("../../register.php?username=invalidLenght?");
 	} else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$_SESSION['emailInvalid'] = $email;
 		$_SESSION['username'] = $username;
 
-		url("../../index.php?email=invalid?");
+		url("../../register.php?email=invalid?");
 	} else if($password != $confirmPassword) {
 		$_SESSION['passwordmatch'] = $password;
 		$_SESSION['email'] = $email;
 		$_SESSION['username'] = $username;
 
-		url("../../index.php?passwords=noMatch?");
+		url("../../register.php?passwords=noMatch?");
+	} else if(strlen($password) < 8) {
+		$_SESSION['passwordInvalidLenght'] = $password;
+		$_SESSION['email'] = $email;
+		$_SESSION['username'] = $username;
+
+		url("../../register.php?password=invalidLenght?");
+	} else if(is_numeric($password)) {
+		$_SESSION['passwordNewmeric'] = $password;
+		$_SESSION['email'] = $email;
+		$_SESSION['username'] = $username;
+
+		url("../../register.php?password=invalidCharacters?");
+	} else if(!preg_match('/[A-Z]/', $password)) {
+		$_SESSION['passwordCaps'] = $password;
+		$_SESSION['email'] = $email;
+		$_SESSION['username'] = $username;
+
+		url("../../register.php?password=invalid?");
+	}  else if(!preg_match('/[a-z]/', $password)) {
+		$_SESSION['passwordLower'] = $password;
+		$_SESSION['email'] = $email;
+		$_SESSION['username'] = $username;
+
+		url("../../register.php?password=invalid?");
+	}  else if(!preg_match("/[\'^$%&*(){@#~?<>,|_+-]/", $password)) {
+		$_SESSION['passwordSpecail'] = $password;
+		$_SESSION['email'] = $email;
+		$_SESSION['username'] = $username;
+
+		url("../../register.php?password=invalid?");
 	} else {
 		$sql = "SELECT * FROM users WHERE user_username = '$username'";
 
@@ -58,7 +99,7 @@ if(isset($_POST['submit'])) {
 			$_SESSION['usernameExists'] = $username;
 			$_SESSION['email'] = $email;
 
-			url("../../index.php?username=exists?");
+			url("../../register.php?username=exists?");
 		} else {
 
 		$sql = "SELECT * FROM users WHERE user_email = '$email'";
@@ -70,7 +111,7 @@ if(isset($_POST['submit'])) {
 			$_SESSION['emailExists'] = $email;
 			$_SESSION['username'] = $username;
 
-			url("../../index.php?username=exists?");
+			url("../../register.php?username=exists?");
 		} else {
 			$username = mysqli_real_escape_string($connection, $username);
 			$email = mysqli_real_escape_string($connection, $email);
@@ -84,8 +125,10 @@ if(isset($_POST['submit'])) {
 
 			$conf = 'not confirmed';
 
+			$user = 'member';
 
-			$sql = "INSERT INTO users (user_username, user_email, user_password, user_joined, user_confirmation_code, user_confirmed) VALUES ('$username', '$email', '$hash', '$date', '$rand', '$conf');";
+
+			$sql = "INSERT INTO users (user_username, user_email, user_password, user_joined, user_confirmation_code, user_confirmed, user_group) VALUES ('$username', '$email', '$hash', '$date', '$rand', '$conf', '$user');";
 			mysqli_query($connection, $sql);
 
 			$_SESSION["thankyou"] = 'thanks';
